@@ -213,9 +213,11 @@ for r in rows:
 	#check if sent already (if exists in log file)
 	
 	if str(r.get(u'report_title')) not in sent_id_list_only:
-		text_to_send = u'התפרסם דו"ח בשם '
+		text_to_send = u''
+		text_to_send += u' התפרסם דו"ח '
 		text_to_send += r.get(u'report_title') 
-		text_to_send += u'. קישור:%0A%0Ahttps://foi.gov.il/he/search/site/'	
+		text_to_send += u' קישור '
+		text_to_send += u"https://foi.gov.il/he/search/site/"
 		text_to_send = text_to_send.replace(' ', '%20')
 		text_to_send = text_to_send.encode('utf-8')
 		
