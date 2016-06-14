@@ -225,7 +225,7 @@ for r in rows:
 		result = urllib.urlopen(url_adress)
 			
 		#add to log file
-		sent_id_list_only.append(str(r.get(u'report_title')))
+		sent_id_list_only.append(r.get(u'report_title').encode('utf8'))
 		time.sleep(1)
 
 #how many sent in this script running
