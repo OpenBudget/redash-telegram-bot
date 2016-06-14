@@ -206,7 +206,7 @@ for r in rows:
 		time.sleep(1)
 
 #read the query from the procurement
-rows = get_query_results(571, '873d2d8a3ffbc0cba37103d3d330408d2bb1799')
+rows = get_query_results(571, '873d2d8a3a8ffbc0cba37103d3d30408d2bb1799')
 	
 #run among the query results
 for r in rows:
