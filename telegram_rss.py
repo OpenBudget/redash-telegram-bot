@@ -205,6 +205,26 @@ for r in rows:
 		sent_id_list_only.append(str(r.get(u'publication_id'))+"_"+str(r.get(u'entity_id'))+"_"+str(r.get(u'volume')))
 		time.sleep(1)
 
+#read the query from the procurement
+rows = get_query_results(571, '873d2d8a3ffbc0cba37103d3d330408d2bb1799')
+	
+#run among the query results
+for r in rows:
+	#check if sent already (if exists in log file)
+	
+	if str(r.get(u'report_title')) not in sent_id_list_only:
+		text_to_send = u'התפרסם דו"ח בשם '
+		text_to_send += r.get(u'report_title') 
+		text_to_send += u'. קישור:%0A%0Ahttps://foi.gov.il/he/search/site/'	
+		text_to_send = text_to_send.replace(' ', '%20')
+		text_to_send = text_to_send.encode('utf-8')
+		
+		url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001059426333&text='+text_to_send
+		result = urllib.urlopen(url_adress)
+			
+		#add to log file
+		sent_id_list_only.append(str(r.get(u'report_title')))
+		time.sleep(1)
 
 #how many sent in this script running
 print "SENT", len(sent_id_list_only) - start_number 
