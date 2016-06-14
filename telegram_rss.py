@@ -212,7 +212,7 @@ rows = get_query_results(571, '873d2d8a3a8ffbc0cba37103d3d30408d2bb1799')
 for r in rows:
 	#check if sent already (if exists in log file)
 	
-	if str(r.get(u'report_title')).encode('utf8') not in sent_id_list_only:
+	if r.get(u'report_title').encode('utf8') not in sent_id_list_only:
 		text_to_send = u''
 		text_to_send += u' התפרסם דו"ח '
 		text_to_send += r.get(u'report_title') 
