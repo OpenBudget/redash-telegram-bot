@@ -73,7 +73,7 @@ for r in rows:
 		#	text_to_send += u'%0A%0Aתקנה: ' + r.get(u'regulation')
 		
 		if r.get(u'volume') is not None and r.get(u'source_currency') is not None:
-				text_to_send += u'%0A%0A*כספי:* ' +  unicode("{:,}".format(r.get(u'volume'))) + u' ' + r.get(u'source_currency')
+				text_to_send += u'%0A%0A*היקף:* ' +  unicode("{:,}".format(r.get(u'volume'))) + u' ' + r.get(u'source_currency')
 		
 		#if r.get(u'start_date') is not None:
 		#		text_to_send += u'%0A%0Aתחילת התקשרות: ' + r.get(u'start_date')
