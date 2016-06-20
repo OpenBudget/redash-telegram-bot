@@ -61,9 +61,9 @@ for r in rows:
 		
 		if r.get(u'description') is not None:
 			if r.get(u'entity_id') is not None and r.get(u'entity_id') <> u'0':
-				text_to_send += u'%0A%0A*נושא:* ' + u'[' + r.get(u'description')[0:120] + u']' + u('http://www.obudget.org/#entity/'+unicode(r.get(u'entity_id'))+'/publication/'+unicode(r.get(u'publication_id'))+u')'
+				text_to_send += u'%0A%0A*נושא:* ' + u'[' + r.get(u'description')[0:120] + u']' + u('http://www.obudget.org/#entity/'+unicode(r.get(u'entity_id'))+'/publication/'+unicode(r.get(u'publication_id')))+u')'
 			else:
-				text_to_send += u'%0A%0A*נושא:* ' + u'[' + r.get(u'description')[0:120] + u']' + u('http://www.mr.gov.il/ExemptionMessage/Pages/ExemptionMessage.aspx?pID='+unicode(r.get(u'publication_id'))+u')'					
+				text_to_send += u'%0A%0A*נושא:* ' + u'[' + r.get(u'description')[0:120] + u']' + u('http://www.mr.gov.il/ExemptionMessage/Pages/ExemptionMessage.aspx?pID='+unicode(r.get(u'publication_id')))+u')'					
 			#text_to_send += u'%0A%0A*נושא*: ' + r.get(u'description')[0:100] + u' ... '
 		
 		if r.get(u'decision') is not None:
