@@ -60,30 +60,31 @@ for r in rows:
 				text_to_send += u'%0A%0A*ספק:* ' + r.get(u'where_money_go_name')
 		
 		if r.get(u'description') is not None:
-				if len(r.get(u'description'))<100:
-					text_to_send += u'%0A%0A*מהות ההתקשרות:* ' + r.get(u'description')
-				else:
-					text_to_send += u'%0A%0A*מהות ההתקשרות:* ' + r.get(u'description')[0:100] + u' ... '
+			if r.get(u'entity_id') is not None and r.get(u'entity_id') <> u'0':
+				text_to_send += u'%0A%0A*נושא:* ' + u'[' + r.get(u'description')[0:120]' + u']' + u'(http://www.obudget.org/#entity/'+unicode(r.get(u'entity_id'))+'/publication/'+unicode(r.get(u'publication_id'))+u')'
+			else:
+				text_to_send += u'%0A%0A*נושא:* ' + u'[' + r.get(u'description')[0:120]' + u']' + u'(http://www.mr.gov.il/ExemptionMessage/Pages/ExemptionMessage.aspx?pID='+unicode(r.get(u'publication_id'))+u')'					
+			#text_to_send += u'%0A%0A*נושא*: ' + r.get(u'description')[0:100] + u' ... '
 		
 		if r.get(u'decision') is not None:
-				text_to_send += u'%0A%0A*סטטוס החלטה:* ' + r.get(u'decision') 
+				text_to_send += u'%0A%0A*סטאטוס:* ' + r.get(u'decision') 
 		
 		#if r.get(u'regulation') is not None:
 		#	text_to_send += u'%0A%0Aתקנה: ' + r.get(u'regulation')
 		
 		if r.get(u'volume') is not None and r.get(u'source_currency') is not None:
-				text_to_send += u'%0A%0A*היקף כספי:* ' +  unicode("{:,}".format(r.get(u'volume'))) + u' ' + r.get(u'source_currency')
+				text_to_send += u'%0A%0A*כספי:* ' +  unicode("{:,}".format(r.get(u'volume'))) + u' ' + r.get(u'source_currency')
 		
 		#if r.get(u'start_date') is not None:
 		#		text_to_send += u'%0A%0Aתחילת התקשרות: ' + r.get(u'start_date')
 		
-		if r.get(u'end_date') is not None:
-				text_to_send += u'%0A%0A*סוף התקשרות:* ' + r.get(u'end_date')
+		#if r.get(u'end_date') is not None:
+		#		text_to_send += u'%0A%0A*סוף התקשרות:* ' + r.get(u'end_date')
 		
-		if r.get(u'entity_id') is not None and r.get(u'entity_id') <> u'0':
-			text_to_send += u'%0A%0A[לינק]' + u'(http://www.obudget.org/#entity/'+unicode(r.get(u'entity_id'))+'/publication/'+unicode(r.get(u'publication_id'))+u')'
-		else:
-			text_to_send += u'%0A%0A[לינק]' + u'(http://www.mr.gov.il/ExemptionMessage/Pages/ExemptionMessage.aspx?pID='+unicode(r.get(u'publication_id'))+u')'
+		#if r.get(u'entity_id') is not None and r.get(u'entity_id') <> u'0':
+		#	text_to_send += u'%0A%0A[לינק]' + u'(http://www.obudget.org/#entity/'+unicode(r.get(u'entity_id'))+'/publication/'+unicode(r.get(u'publication_id'))+u')'
+		#else:
+		#	text_to_send += u'%0A%0A[לינק]' + u'(http://www.mr.gov.il/ExemptionMessage/Pages/ExemptionMessage.aspx?pID='+unicode(r.get(u'publication_id'))+u')'
 
 		
 		text_to_send = text_to_send.replace(' ', '%20')
