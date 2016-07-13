@@ -54,9 +54,9 @@ for r in rows:
 		#if not sent already, create the message
 		text_to_send = u''
 		
-		if r.get(u'full_publisher') is not None:
+		if r.get(u'publisher') is not None:
 			text_to_send += u'*מפרסם:* ' + r.get(u'full_publisher') 
-		if r.get(u'where_money_go_name') is not None:
+		if r.get(u'supplier') is not None:
 				text_to_send += u'%0A%0A*ספק:* ' + r.get(u'where_money_go_name')
 		if r.get(u'description') is not None:
 			if r.get(u'entity_id') is not None and r.get(u'entity_id') <> u'0':
@@ -76,7 +76,7 @@ for r in rows:
 		text_to_send = text_to_send.encode('utf-8')
 		
 		#send
-		url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001058537523&text='+text_to_send
+		url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001058537523&parse_mode=markdown&text='+text_to_send
 		result = urllib.urlopen(url_adress)
 		
 		#add to log file
