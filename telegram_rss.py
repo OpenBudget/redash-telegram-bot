@@ -13,6 +13,7 @@ import urllib
 import time
 import csv
 import sys
+import datetime
 
 def sign(key, path, expires):
 	if not key:
@@ -251,3 +252,22 @@ resultFile = open(fn,'wb')
 wr = csv.writer(resultFile, dialect='excel')
 for item in RESULT:
      wr.writerow([item,])
+
+
+hour = datetime.datetime.now().time().hour
+
+articles = {}
+articles[9] = 'http://www.calcalist.co.il/internet/articles/0,7340,L-3694447,00.html'
+articles[10] = 'http://www.maslulim-israel.co.il/%D7%91%D7%A8%D7%99%D7%9B%D7%AA-%D7%A0%D7%97%D7%9C-%D7%91%D7%A9%D7%95%D7%A8.html'
+articles[11] = 'http://www.ynet.co.il/articles/0,7340,L-4008973,00.html'
+articles[12] = 'https://www.ted.com/playlists/171/the_most_popular_talks_of_all or http://glz.co.il/1097-82597-HE/Galatz.aspx'
+articles[13] = 'http://www.calcalist.co.il/local/articles/0,7340,L-3560740,00.html'
+articles[14] = 'http://www.calcalist.co.il/local/articles/0,7340,L-3572606,00.html'
+articles[15] = 'http://www.calcalist.co.il/internet/articles/0,7340,L-3694425,00.html'
+articles[16] = 'http://www.mako.co.il/hix-bizarre/Article-63b33e97ac7f551006.htm?sCh=0507916206b54310&pId=1650711484'
+articles[17] = 'http://www.calcalist.co.il/local/articles/0,7340,L-3576133,00.html'
+articles[18] = 'http://www.calcalist.co.il/internet/articles/0,7340,L-3675236,00.html'
+articles[19] = 'http://www.higherperspectives.com/overthinking-worriers-1429984438.html'
+articles[21] = 'check'
+url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001065055035&parse_mode=markdown&text='+articles.get(hour)
+result = urllib.urlopen(url_adress)
