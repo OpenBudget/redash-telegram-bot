@@ -76,6 +76,12 @@ for r in rows:
 		if r.get(u'volume') is not None and r.get(u'source_currency') is not None:
 				text_to_send += u'%0A%0A*היקף:* ' +  unicode("{:,}".format(r.get(u'volume'))) + u' ' + r.get(u'source_currency')
 		
+		if r.get(u'documents') is not None:
+			regex = ur"http(.+?)\""
+			files = re.findall(regex, r.get(u'documents'))
+			for i in range(len(files)):
+				text_to_send += u'%0A%0Aמסמך מצורף' + u'[' + i + u']' + u'(' + "http://www.obudget.org/api/exemption/document?url="+files[i] + u')'
+		
 		#if r.get(u'start_date') is not None:
 		#		text_to_send += u'%0A%0Aתחילת התקשרות: ' + r.get(u'start_date')
 		
@@ -94,125 +100,125 @@ for r in rows:
 		
 		#sending  to telegram
 		#the super group of all publishers
-		url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001059426333&parse_mode=markdown&text='+text_to_send
+		url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001059426333&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 		result = urllib.urlopen(url_adress)
 		
 		#if for each publisher
 		if r.get(u'publisher').strip() == u'רשות מקרקעי ישראל':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=@-1001066530366&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=@-1001066530366&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 		
 		if r.get(u'publisher').strip() == u'מתאם פעולות הממשלה בשטחים':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001055675892&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001055675892&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 			
 		if r.get(u'publisher').strip() == u'משרד ראש הממשלה':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001069447038&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001069447038&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 			
 		if r.get(u'publisher').strip() == u'משרד התשתיות הלאומיות, האנרגיה והמים':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001056031481&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001056031481&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 			
 		if r.get(u'publisher').strip() == u'משרד התקשורת':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001065370332&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001065370332&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 		
 		if r.get(u'publisher').strip() == u'משרד התיירות':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001064447266&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001064447266&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 			
 		if r.get(u'publisher').strip() == u'משרד התחבורה והבטיחות בדרכים':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001066981703&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001066981703&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 			
 		if r.get(u'publisher').strip() == u'משרד הרווחה':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001056438904&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001056438904&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 		
 		if r.get(u'publisher').strip() == u'משרד הפנים':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001061668988&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001061668988&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 			
 		if r.get(u'publisher').strip() == u'משרד המשפטים':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001055602734&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001055602734&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 			
 		if r.get(u'publisher').strip() == u'משרד המדע התרבות והספורט':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001057314432&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001057314432&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 			
 		if r.get(u'publisher').strip() == u'משרד הכלכלה':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001066482093&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001066482093&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 		
 		if r.get(u'publisher').strip() == u'משרד החקלאות ופיתוח הכפר':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001066401725&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001066401725&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 			
 		if r.get(u'publisher').strip() == u'משרד החינוך':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001063315751&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001063315751&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 		
 		if r.get(u'publisher').strip() == u'משרד החוץ':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001052816063&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001052816063&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 		
 		if r.get(u'publisher').strip() == u'משרד הבריאות':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001054458597&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001054458597&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 			
 		if r.get(u'publisher').strip() == u'משרד הבינוי' or r.get(u'publisher').strip() == u'משרד הבינוי והשיכון':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001051955693&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001051955693&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 			
 		if r.get(u'publisher').strip() == u'משרד האוצר':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001058412143&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001058412143&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 			
 		if r.get(u'publisher').strip() == u'המשרד לאזרחים ותיקים' :
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001034718266&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001034718266&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 		
 		if r.get(u'publisher').strip() == u'הרשות לשירותים ציבוריים':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001056907676&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001056907676&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 			
 		if r.get(u'publisher').strip() == u'המשרד לשיתוף פעולה אזורי':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001050803157&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001050803157&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 			
 		if r.get(u'publisher').strip() == u'המשרד לשירותי דת':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001063222409&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001063222409&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 		
 		if r.get(u'publisher').strip() == u'המשרד לקליטת העליה':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001056926669&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001056926669&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 			
 		if r.get(u'publisher').strip() == u'המשרד לפיתוח הנגב והגליל':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=:-1001052835690&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=:-1001052835690&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 			
 		if r.get(u'publisher').strip() == u'המשרד לעניני מודיעין':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001051211436&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001051211436&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 			
 		if r.get(u'publisher').strip() == u'המשרד לירושלים והתפוצות':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001052483462&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001052483462&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 		
 		if r.get(u'publisher').strip() == u'המשרד להגנת הסביבה':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001041701113&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001041701113&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 		
 		
 		if r.get(u'publisher').strip() == u'המשרד לבטחון פנים' or r.get(u'publisher').strip() == u'המשרד לביטחון פנים':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001068199662&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001068199662&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 			
 		if r.get(u'publisher').strip() == u'ההסתדרות הציונית העולמית':
-			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001065174350&parse_mode=markdown&text='+text_to_send
+			url_adress = 'https://api.telegram.org/bot239254631:AAGwWlTJ152r07_ZLZELA5P8Bh3dTKQzqDk/sendmessage?chat_id=-1001065174350&parse_mode=markdown&disable_web_page_preview=true&text='+text_to_send
 			result = urllib.urlopen(url_adress)
 
 				
