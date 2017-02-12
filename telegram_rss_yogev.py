@@ -57,7 +57,7 @@ for r in rows:
 		if r.get(u'publisher') is not None:
 			text_to_send += u'*מפרסם:* ' + r.get(u'publisher') 
 		if r.get(u'supplier') is not None:
-				text_to_send += u'%0A%0A*ספק:* ' + r.get(u'where_money_go_name')
+				text_to_send += u'%0A%0A*ספק:* ' + r.get(u'supplier')
 		if r.get(u'description') is not None:
 			if r.get(u'entity_id') is not None and r.get(u'entity_id') <> u'0':
 				text_to_send += u'%0A%0A*נושא:* ' + u'[' + r.get(u'description')[0:120] + u']' + u'(' + 'http://www.obudget.org/#entity/'+unicode(r.get(u'entity_id'))+'/publication/'+unicode(r.get(u'publication_id'))+u')'
