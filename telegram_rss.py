@@ -14,6 +14,7 @@ import time
 import csv
 import sys
 import datetime
+import re
 
 def sign(key, path, expires):
 	if not key:
