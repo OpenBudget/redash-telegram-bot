@@ -81,7 +81,7 @@ for r in rows:
 			regex = ur"http(.+?)\""
 			files = re.findall(regex, r.get(u'documents'))
 			for i in range(len(files)):
-				text_to_send += u'%0A%0Aמסמך מצורף' + u'[' + i + u']' + u'(' + "http://www.obudget.org/api/exemption/document?url="+files[i] + u')'
+				text_to_send += u'%0A%0Aמסמך מצורף' + u'[' +  unicode(i)  + u']' + u'(' + "http://www.obudget.org/api/exemption/document?url="+files[i] + u')'
 		
 		#if r.get(u'start_date') is not None:
 		#		text_to_send += u'%0A%0Aתחילת התקשרות: ' + r.get(u'start_date')
