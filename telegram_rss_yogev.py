@@ -55,7 +55,7 @@ for r in rows:
 		text_to_send = u''
 		
 		if r.get(u'publisher') is not None:
-			text_to_send += u'*מפרסם:* ' + r.get(u'full_publisher') 
+			text_to_send += u'*מפרסם:* ' + r.get(u'publisher') 
 		if r.get(u'supplier') is not None:
 				text_to_send += u'%0A%0A*ספק:* ' + r.get(u'where_money_go_name')
 		if r.get(u'description') is not None:
