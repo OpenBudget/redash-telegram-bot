@@ -84,7 +84,7 @@ for r in rows:
 			descs = re.findall(reg_desc, r.get(u'documents'))			
 			
 			for i in range(len(files)):
-				text_to_send += u'%0A%0A:open_file_folder:[' + u'#' + unicode(i + 1) + u': ' + descs[i][2:] + u']' + u'(' + "http://www.obudget.org/api/exemption/document?url=http"+files[i] + u')'
+				text_to_send += u'%0A%0A:open_file_folder:[' + u'#' + unicode(i + 1) + u': ' + descs[i][2:-4] + u']' + u'(' + "http://www.obudget.org/api/exemption/document?url=http"+files[i] + u')'
 						
 		#if r.get(u'start_date') is not None:
 		#		text_to_send += u'%0A%0Aתחילת התקשרות: ' + r.get(u'start_date')
