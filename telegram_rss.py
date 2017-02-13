@@ -59,7 +59,7 @@ for r in rows:
 			text_to_send += u'*מפרסם:* ' + r.get(u'full_publisher') 
 		
 		if r.get(u'where_money_go_name') is not None:
-				text_to_send += u'%0A*ספק:* ' + r.get(u'where_money_go_name')
+				text_to_send += u'%0A:briefcase:*ספק:* ' + r.get(u'where_money_go_name')
 		
 		if r.get(u'description') is not None:
 			if r.get(u'entity_id') is not None and r.get(u'entity_id') <> u'0':
@@ -69,7 +69,7 @@ for r in rows:
 			#text_to_send += u'%0A%0A*נושא*: ' + r.get(u'description')[0:100] + u' ... '
 		
 		if r.get(u'decision') is not None:
-				text_to_send += u'%0A*סטאטוס:* ' + r.get(u'decision') 
+				text_to_send += u'%0A:pushpin:*סטאטוס:* ' + r.get(u'decision') 
 		
 		#if r.get(u'regulation') is not None:
 		#	text_to_send += u'%0A%0Aתקנה: ' + r.get(u'regulation')
@@ -84,7 +84,7 @@ for r in rows:
 			descs = re.findall(reg_desc, r.get(u'documents'))			
 			
 			for i in range(len(files)):
-				text_to_send += u'%0A%0A[' + u'#' + unicode(i + 1) + u': ' + descs[i][2:] + u']' + u'(' + "http://www.obudget.org/api/exemption/document?url=http"+files[i] + u')'
+				text_to_send += u'%0A%0A:open_file_folder:[' + u'#' + unicode(i + 1) + u': ' + descs[i][2:] + u']' + u'(' + "http://www.obudget.org/api/exemption/document?url=http"+files[i] + u')'
 						
 		#if r.get(u'start_date') is not None:
 		#		text_to_send += u'%0A%0Aתחילת התקשרות: ' + r.get(u'start_date')
