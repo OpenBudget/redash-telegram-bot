@@ -78,11 +78,14 @@ for r in rows:
 				text_to_send += u'%0A*היקף:* ' +  unicode("{:,}".format(r.get(u'volume'))) + u' ' + r.get(u'source_currency')
 		
 		if r.get(u'documents') is not None:
-			regex = ur"http(.+?)\""
-			files = re.findall(regex, r.get(u'documents'))
+			reg_files = ur"http(.+?)\""
+			files = re.findall(reg_files, r.get(u'documents'))
+			reg_desc = ur"description(.+?)update_time"
+			descs = re.findall(reg_desc, r.get(u'documents'))			
+			
 			for i in range(len(files)):
-				text_to_send += u'[' +u'%0A%0Aמסמך מצורף #' + unicode(i + 1)  + u']' + u'(' + "http://www.obudget.org/api/exemption/document?url=http"+files[i] + u')'
-		
+				text_to_send += u'%0A%0A[' + u'#' + unicode(i + 1) + u': ' + descs[i][2:] + u']' + u'(' + "http://www.obudget.org/api/exemption/document?url=http"+files[i] + u')'
+						
 		#if r.get(u'start_date') is not None:
 		#		text_to_send += u'%0A%0Aתחילת התקשרות: ' + r.get(u'start_date')
 		
