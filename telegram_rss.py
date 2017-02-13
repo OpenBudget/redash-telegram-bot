@@ -59,29 +59,29 @@ for r in rows:
 			text_to_send += u'*מפרסם:* ' + r.get(u'full_publisher') 
 		
 		if r.get(u'where_money_go_name') is not None:
-				text_to_send += u'%0A%0A*ספק:* ' + r.get(u'where_money_go_name')
+				text_to_send += u'%0A*ספק:* ' + r.get(u'where_money_go_name')
 		
 		if r.get(u'description') is not None:
 			if r.get(u'entity_id') is not None and r.get(u'entity_id') <> u'0':
-				text_to_send += u'%0A%0A*נושא:* ' + u'[' + r.get(u'description')[0:120] + u']' + u'(' + 'http://www.obudget.org/#entity/'+unicode(r.get(u'entity_id'))+'/publication/'+unicode(r.get(u'publication_id'))+u')'
+				text_to_send += u'%0A*נושא:* ' + u'[' + r.get(u'description')[0:120] + u']' + u'(' + 'http://www.obudget.org/#entity/'+unicode(r.get(u'entity_id'))+'/publication/'+unicode(r.get(u'publication_id'))+u')'
 			else:
-				text_to_send += u'%0A%0A*נושא:* ' + u'[' + r.get(u'description')[0:120] + u']' + u'(' + 'http://www.mr.gov.il/ExemptionMessage/Pages/ExemptionMessage.aspx?pID='+unicode(r.get(u'publication_id'))+u')'
+				text_to_send += u'%0A*נושא:* ' + u'[' + r.get(u'description')[0:120] + u']' + u'(' + 'http://www.mr.gov.il/ExemptionMessage/Pages/ExemptionMessage.aspx?pID='+unicode(r.get(u'publication_id'))+u')'
 			#text_to_send += u'%0A%0A*נושא*: ' + r.get(u'description')[0:100] + u' ... '
 		
 		if r.get(u'decision') is not None:
-				text_to_send += u'%0A%0A*סטאטוס:* ' + r.get(u'decision') 
+				text_to_send += u'%0A*סטאטוס:* ' + r.get(u'decision') 
 		
 		#if r.get(u'regulation') is not None:
 		#	text_to_send += u'%0A%0Aתקנה: ' + r.get(u'regulation')
 		
 		if r.get(u'volume') is not None and r.get(u'source_currency') is not None:
-				text_to_send += u'%0A%0A*היקף:* ' +  unicode("{:,}".format(r.get(u'volume'))) + u' ' + r.get(u'source_currency')
+				text_to_send += u'%0A*היקף:* ' +  unicode("{:,}".format(r.get(u'volume'))) + u' ' + r.get(u'source_currency')
 		
 		if r.get(u'documents') is not None:
 			regex = ur"http(.+?)\""
 			files = re.findall(regex, r.get(u'documents'))
 			for i in range(len(files)):
-				text_to_send += u'%0A%0Aמסמך מצורף #' + u'[' +  unicode(i + 1)  + u']' + u'(' + "http://www.obudget.org/api/exemption/document?url=http"+files[i] + u')'
+				text_to_send += u'[' +u'%0A%0Aמסמך מצורף #' + unicode(i + 1)  + u']' + u'(' + "http://www.obudget.org/api/exemption/document?url=http"+files[i] + u')'
 		
 		#if r.get(u'start_date') is not None:
 		#		text_to_send += u'%0A%0Aתחילת התקשרות: ' + r.get(u'start_date')
