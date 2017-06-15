@@ -68,7 +68,7 @@ for r in rows:
 				text_to_send += u'%0A*נושא:* ' + u'[' + r.get(u'description')[0:120] + u']' + u'(' + 'http://www.mr.gov.il/ExemptionMessage/Pages/ExemptionMessage.aspx?pID='+unicode(r.get(u'publication_id'))+u')'
 			#text_to_send += u'%0A%0A*נושא*: ' + r.get(u'description')[0:100] + u' ... '
 		
-		if r.get(u'decision') is not None:
+		if r.get(u'decision') is not None and len(r.get(u'decision'))>4:
 				text_to_send += u'%0A*סטאטוס:* ' + r.get(u'decision') 
 		
 		#if r.get(u'regulation') is not None:
@@ -85,7 +85,8 @@ for r in rows:
 			
 			for i in range(len(files)):
 				text_to_send += u'%0A%0A[' + u'#' + unicode(i + 1) + u': ' + descs[i][4:-4] + u']' + u'(' + "http://www.obudget.org/api/exemption/document?url=http"+files[i] + u')'
-						
+		if r.get(u'text_msg') is not None:
+			text_to_send += u'%0A%0A' + r.get(u'text_msg')						
 		#if r.get(u'start_date') is not None:
 		#		text_to_send += u'%0A%0Aתחילת התקשרות: ' + r.get(u'start_date')
 		
